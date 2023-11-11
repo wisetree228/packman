@@ -9,5 +9,7 @@ ZIP архив не позволит вам вносить изменения н
 
 ## requirements
 `python3 -m venv venv` - создать виртуальное окружение
+
 `source venv/bin/activate` - подключиться к venv
+
 `pip3 install -r requirements.txt` - установить необходимые зависимости
