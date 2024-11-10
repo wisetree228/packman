@@ -17,3 +17,5 @@ class MenuScene(BaseScene):
     def additional_process_event(self):
         if pyray.is_key_pressed(pyray.KeyboardKey.KEY_P):
             Settings.set_scene(1)
+        elif pyray.is_key_pressed(pyray.KeyboardKey.KEY_ONE):
+            Settings.set_game_scene()
