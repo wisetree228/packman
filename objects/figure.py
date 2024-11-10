@@ -1,6 +1,38 @@
 import pyray
 from raylib import colors
-from base import BaseObject
+from objects.base import BaseObject
+
+
+class Button(BaseObject):
+    def __init__(self, x, y, width, height, text, color=pyray.BLACK, hover_color=pyray.LIGHTGRAY):
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+        self.text = text
+        self.color = color
+        self.hover_color = hover_color
+
+    def logic(self):
+        mouse_position = pyray.get_mouse_position()
+        return (self.x <= mouse_position.x <= self.x + self.width and
+                self.y <= mouse_position.y <= self.y + self.height)
+
+    def draw(self):
+        # Определяем цвет в зависимости от состояния кнопки
+        current_color = self.hover_color if self.logic() else self.color
+        pyray.draw_rectangle(self.x, self.y, self.width, self.height, current_color)
+
+        # Отрисовка текста на кнопке
+        text_width = pyray.measure_text(self.text, 40)
+        text_x = self.x + (self.width - text_width) // 2
+        text_y = self.y + (self.height - 20) // 2
+        pyray.draw_text(self.text, text_x, text_y, 40, pyray.RED)
+
+    def check_click(self):
+        if self.logic() and pyray.is_mouse_button_pressed(pyray.MOUSE_LEFT_BUTTON):
+            return True
+        return False
 
 
 class Rect(BaseObject):
