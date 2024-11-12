@@ -26,9 +26,13 @@ class MenuScene(BaseScene):
         self.pacman.game()
         if self.exit_button.check_click():
             pyray.close_window()
+        if self.new_game_button.check_click():
+            Settings.set_game_scene()
         if pyray.is_key_pressed(pyray.KeyboardKey.KEY_P):
             Settings.set_scene(1)
         elif pyray.is_key_pressed(pyray.KeyboardKey.KEY_ONE):
-            Settings.set_game_scene()
-        elif pyray.is_key_pressed(pyray.KeyboardKey.KEY_TWO):
+            Settings.set_scene(1)
+        # elif pyray.is_key_pressed(pyray.KeyboardKey.KEY_TWO):
+        #     Settings.set_game_scene()
+        elif pyray.is_key_pressed(pyray.KeyboardKey.KEY_THREE):
             Settings.set_settings_scene()
