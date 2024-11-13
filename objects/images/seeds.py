@@ -9,3 +9,13 @@ class Seed(BaseObject):
 
     def draw(self):
         pyray.draw_circle(self.x, self.y, 10, colors.YELLOW)
+
+
+class Energizer(BaseObject):
+    def __init__(self, x, y):
+        self.weight = 50
+        self.x = x
+        self.y = y
+
+    def draw(self):
+        pyray.draw_circle(self.x, self.y, 20, colors.YELLOW)

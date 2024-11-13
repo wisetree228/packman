@@ -12,13 +12,13 @@ class GameScene(BaseScene):
         self.pacman = Pacman(Settings.WIDTH - 40, Settings.HEIGHT - 40)
         super().__init__()
 
-    def set_up_objects(self):
-        self.objects.append(self.pacman)
+    #def set_up_objects(self):
+        #self.objects.append(self.pacman)
 
 
 
     def additional_process_event(self):
-        self.pacman.game()
+        #self.pacman.game()
         if pyray.is_key_pressed(pyray.KeyboardKey.KEY_P):
             Settings.set_scene(1)
         elif pyray.is_key_pressed(pyray.KeyboardKey.KEY_ONE):
