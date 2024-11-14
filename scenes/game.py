@@ -3,13 +3,15 @@ import pyray
 import raylib
 from settings import Settings
 from objects.images.pacman import Pacman
-
+from objects.field import FieldDrawer
+from logic.field import Field
 
 class GameScene(BaseScene):
     def __init__(self):
         self.objects = []
         self.set_up_objects()
         self.pacman = Pacman(Settings.WIDTH - 40, Settings.HEIGHT - 40)
+        self.field = FieldDrawer(field = Field())
         super().__init__()
 
     #def set_up_objects(self):
@@ -19,6 +21,7 @@ class GameScene(BaseScene):
 
     def additional_process_event(self):
         #self.pacman.game()
+        self.field.draw()
         if pyray.is_key_pressed(pyray.KeyboardKey.KEY_P):
             Settings.set_scene(1)
         elif pyray.is_key_pressed(pyray.KeyboardKey.KEY_ONE):

@@ -7,12 +7,12 @@ class Cell(BaseObject):
         self.type = type
 
     def draw(self):
-        if self.type == 0:
+        if self.type == 0: #void
             color = pyray.BLACK
-        elif self.type == 1:
+        elif self.type == 1: #wall
             color = pyray.PURPLE
-        elif self.type == 2:
+        elif self.type == 2: #ghost room
             color = pyray.BLUE
-        else:
+        else: #teleport
             color = pyray.GREEN
-        pyray.draw_rectangle(self.x, self.y, 60, 60, color)
+        pyray.draw_rectangle(self.x, self.y, 80, 80, color)
