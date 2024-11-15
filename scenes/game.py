@@ -5,6 +5,7 @@ from settings import Settings
 from objects.images.pacman import Pacman
 from objects.field import FieldDrawer
 from logic.field import Field
+from objects.ghosts.blinky import BlinkyGhost
 
 class GameScene(BaseScene):
     def __init__(self):
@@ -12,6 +13,7 @@ class GameScene(BaseScene):
         self.set_up_objects()
         self.pacman = Pacman(Settings.WIDTH - 40, Settings.HEIGHT - 40)
         self.field = FieldDrawer(field = Field())
+        self.redGhost = BlinkyGhost(100, 100, 10)
         super().__init__()
 
     #def set_up_objects(self):
@@ -22,6 +24,8 @@ class GameScene(BaseScene):
     def additional_process_event(self):
         #self.pacman.game()
         self.field.draw()
+        self.redGhost.update()
+        self.redGhost.draw()
         if pyray.is_key_pressed(pyray.KeyboardKey.KEY_P):
             Settings.set_scene(1)
         elif pyray.is_key_pressed(pyray.KeyboardKey.KEY_ONE):
