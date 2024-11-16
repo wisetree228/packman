@@ -15,7 +15,7 @@ class GameScene(BaseScene):
         self.objects = []
         self.set_up_objects()
         self.pacman = Pacman(Settings.WIDTH - 40, Settings.HEIGHT - 40)
-        self.field = FieldDrawer(field = Field())
+        self.field = FieldDrawer(field=Field())
         self.redGhost = BlinkyGhost(100, 100, 10)
         self.pinkGhost = PinkyGhost(200, 200, 14)
         self.inkyGhost = InkyGhost(300, 300, 12)
