@@ -8,6 +8,7 @@ from logic.field import Field
 from objects.ghosts.blinky import BlinkyGhost
 from objects.ghosts.pinky import PinkyGhost
 from objects.ghosts.inky import InkyGhost
+from objects.ghosts.clyde import ClydeGhost
 
 class GameScene(BaseScene):
     def __init__(self):
@@ -18,6 +19,7 @@ class GameScene(BaseScene):
         self.redGhost = BlinkyGhost(100, 100, 10)
         self.pinkGhost = PinkyGhost(200, 200, 14)
         self.inkyGhost = InkyGhost(300, 300, 12)
+        self.clydeGhost = ClydeGhost(400, 400, 11)
         super().__init__()
 
     #def set_up_objects(self):
@@ -34,6 +36,8 @@ class GameScene(BaseScene):
         self.pinkGhost.draw()
         self.inkyGhost.update()
         self.inkyGhost.draw()
+        self.clydeGhost.update()
+        self.clydeGhost.draw()
         if pyray.is_key_pressed(pyray.KeyboardKey.KEY_P):
             Settings.set_scene(1)
         elif pyray.is_key_pressed(pyray.KeyboardKey.KEY_ONE):
