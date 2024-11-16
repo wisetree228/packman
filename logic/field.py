@@ -10,8 +10,6 @@ class Field(BaseObject):
             self.l.append([])
             for j in f[i]:
                 if j!='\n':
-                    self.l[i].append(j)
-
-
+                    self.l[i]
 
 
