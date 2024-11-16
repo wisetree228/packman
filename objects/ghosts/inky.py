@@ -1,8 +1,8 @@
 from objects.base import BaseObject
 import pyray
 
-class PinkyGhost(BaseObject):
-    def __init__(self, x, y, speed, width=30, height=30, direction="LEFT"):
+class InkyGhost(BaseObject):
+    def __init__(self, x, y, speed, width=30, height=30, direction="DOWN"):
         self.x = x
         self.y = y
         self.speed = speed
@@ -13,7 +13,7 @@ class PinkyGhost(BaseObject):
 
 
     def draw(self):
-        pyray.draw_rectangle(self.x, self.y, self.width, self.height, pyray.PINK)
+        pyray.draw_rectangle(self.x, self.y, self.width, self.height, pyray.BLUE)
 
 
     def update(self):
