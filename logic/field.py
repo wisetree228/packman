@@ -2,7 +2,7 @@ from objects.base import BaseObject
 
 
 class Field(BaseObject):
-    def __init__(self, path_to_file = '/home/prom/PycharmProjects/pacman-py-masters/scenes/field.txt'):
+    def __init__(self, path_to_file = '/home/prom/PirumovP/pacman-py-masters/scenes/field.txt'):
         self.l=[] # создаём двумерный массив который соответствует файлу field.txt
         f = open(path_to_file)
         f = [str(i) for i in f.readlines()]

@@ -1,6 +1,7 @@
 import pyray
 from raylib import colors
 from objects.base import BaseObject
+from logic.field import Field
 
 class Pacman(BaseObject):
     def __init__(self, x, y, speed=5):
@@ -29,6 +30,7 @@ class Pacman(BaseObject):
             self.y = 0
         elif self.y + self.height > pyray.get_screen_height():
             self.y = pyray.get_screen_height() - self.height
+
 
     def draw(self):
         # Рисуем пакмана (жёлтый прямоугольник)
