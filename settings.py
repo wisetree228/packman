@@ -2,7 +2,7 @@ from raylib import colors
 
 
 class Settings:
-    WIDTH = 1000
+    WIDTH = 1040
     HEIGHT = 800
     FPS = 60
     BACKGROUND_COLOR = colors.BLACK
