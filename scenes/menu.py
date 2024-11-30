@@ -43,6 +43,7 @@ class MenuScene(BaseScene):
         #self.objects.append(self.new_game_text)
         #self.objects.append(self.exit_text)
     def additional_process_event(self):
+        #self.pacman.game()
         if self.exit_button.check_click():
             pyray.close_window()
         if self.new_game_button.check_click():
