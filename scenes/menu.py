@@ -13,7 +13,7 @@ class MenuScene(BaseScene):
     def __init__(self):
         self.new_game_button = Button(Settings.WIDTH // 2 -100, Settings.HEIGHT // 2 - 100, 250, 80, "New game")
         self.exit_button = Button(Settings.WIDTH // 2 - 100, Settings.HEIGHT // 2, 250, 80, "Exit")
-        #self.pacman = Pacman(Settings.WIDTH - 40, Settings.HEIGHT - 40)
+        self.pacman = Pacman(Settings.WIDTH - 40, Settings.HEIGHT - 40)
         self.cell1 = Cell(0, 0, 0)
         self.cell2 = Cell(80, 0, 1)
         self.cell3 = Cell(160, 0, 2)
@@ -43,7 +43,8 @@ class MenuScene(BaseScene):
         #self.objects.append(self.new_game_text)
         #self.objects.append(self.exit_text)
     def additional_process_event(self):
-        #self.pacman.game()
+        self.pacman.game()
+        self.highscoredrawer.draw_table()
         if self.exit_button.check_click():
             pyray.close_window()
         if self.new_game_button.check_click():
