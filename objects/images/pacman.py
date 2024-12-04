@@ -10,20 +10,20 @@ class Pacman(BaseObject):
         self.x = x
         self.y = y
         self.speed = speed
-        self.width = 80  # Ширина пакмана
-        self.height = 80  # Высота пакмана
+        self.width = 40  # Ширина пакмана
+        self.height = 40  # Высота пакмана
         self.direction = "RIGHT"  # Начальное направление
         self.cellx = 0
         self.celly = 0
 
     def update(self):
-        self.cellx = self.x//80
-        self.celly = self.y // 80
+        self.cellx = self.x//40
+        self.celly = self.y // 40
         #print(Field_structure[self.celly][self.cellx], self.y, self.celly)
         # Обновление положения пакмана в зависимости от направления
         if self.direction == "UP":
-            if int(Field_structure[self.celly-1][self.cellx]) == 1 or (int(Field_structure[self.celly-1][self.cellx+1]) == 1 and self.x!=(self.cellx+1)*80-80):
-                if self.y == (self.celly-1) * 80+80:
+            if int(Field_structure[self.celly-1][self.cellx]) == 1 or (int(Field_structure[self.celly-1][self.cellx+1]) == 1 and self.x!=(self.cellx+1)*40-40):
+                if self.y == (self.celly-1) * 40+40:
                     self.y = self.y
                 else:
                     self.y -= self.speed
@@ -31,7 +31,7 @@ class Pacman(BaseObject):
             else:
                 self.y -= self.speed
         elif self.direction == "DOWN":
-            if int(Field_structure[self.celly+1][self.cellx]) == 1 or (int(Field_structure[self.celly+1][self.cellx+1]) == 1 and self.x!=(self.cellx+1)*80-80):
+            if int(Field_structure[self.celly+1][self.cellx]) == 1 or (int(Field_structure[self.celly+1][self.cellx+1]) == 1 and self.x!=(self.cellx+1)*40-40):
                 #if self.y == (self.celly+1) * 80+80:
                 self.y = self.y
                 #else:
@@ -40,16 +40,16 @@ class Pacman(BaseObject):
             else:
                 self.y += self.speed
         elif self.direction == "LEFT":
-            if int(Field_structure[self.celly][self.cellx-1]) == 1 or (int(Field_structure[self.celly+1][self.cellx-1]) == 1 and self.y!=(self.celly+1)*80-80):
-                if self.x==(self.cellx-1)*80+80:
+            if int(Field_structure[self.celly][self.cellx-1]) == 1 or (int(Field_structure[self.celly+1][self.cellx-1]) == 1 and self.y!=(self.celly+1)*40-40):
+                if self.x==(self.cellx-1)*40+40:
                     self.x = self.x
                 else:
                     self.x -= self.speed
             else:
                 self.x -= self.speed
         elif self.direction == "RIGHT":
-            if int(Field_structure[self.celly][self.cellx+1]) == 1 or (int(Field_structure[self.celly+1][self.cellx+1]) == 1 and self.y!=(self.celly+1)*80-80):
-                self.x = self.cellx*80
+            if int(Field_structure[self.celly][self.cellx+1]) == 1 or (int(Field_structure[self.celly+1][self.cellx+1]) == 1 and self.y!=(self.celly+1)*40-40):
+                self.x = self.cellx*40
             else:
                 self.x += self.speed
         if self.x < 0:
