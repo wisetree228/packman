@@ -13,7 +13,7 @@ from objects.cherry import Cherry
 
 class GameScene(BaseScene):
     def __init__(self):
-        self.pacman = Pacman(600, 600)
+        self.pacman = Pacman(40, 560)
         self.objects = []
         self.set_up_objects()
         self.field = FieldDrawer(field=Field())
