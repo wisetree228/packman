@@ -43,6 +43,7 @@ class GameScene(BaseScene):
         self.clydeGhost.draw()
         self.cherry.update()
         self.cherry.draw()
+        self.field.eat(self.pacman)
         if pyray.is_key_pressed(pyray.KeyboardKey.KEY_P):
             Settings.set_scene(1)
         elif pyray.is_key_pressed(pyray.KeyboardKey.KEY_ONE):
