@@ -17,7 +17,7 @@ class GameScene(BaseScene):
         self.objects = []
         self.set_up_objects()
         self.field = FieldDrawer(field=Field())
-        self.redGhost = BlinkyGhost(100, 100, 10)
+        self.redGhost = BlinkyGhost(40, 560, 2)
         self.pinkGhost = PinkyGhost(200, 200, 14)
         self.inkyGhost = InkyGhost(300, 300, 12)
         self.clydeGhost = ClydeGhost(400, 400, 11)
@@ -32,6 +32,7 @@ class GameScene(BaseScene):
     def additional_process_event(self):
         self.pacman.game()
         self.field.draw()
+        self.redGhost.game()
         self.redGhost.update()
         self.redGhost.draw()
         self.pinkGhost.update()
