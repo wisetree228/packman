@@ -8,7 +8,7 @@ class Seed(BaseObject):
         self.y = y
 
     def draw(self):
-        pyray.draw_circle(self.x, self.y, 10, colors.YELLOW)
+        pyray.draw_circle(self.x, self.y, 3, colors.YELLOW)
 
 
 class Energizer(BaseObject):
@@ -18,4 +18,4 @@ class Energizer(BaseObject):
         self.y = y
 
     def draw(self):
-        pyray.draw_circle(self.x, self.y, 20, colors.YELLOW)
+        pyray.draw_circle(self.x, self.y, 8, colors.YELLOW)
