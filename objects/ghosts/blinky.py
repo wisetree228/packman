@@ -74,9 +74,11 @@ class BlinkyGhost(BaseObject):
     def game(self):
         self.cellx = self.x // 40
         self.celly = self.y // 40
+        if self.x==480 and self.y==280:
+            self.x=560
         l = []
         l.append(self.direction)
-        if (int(Field_structure[self.celly - 1][self.cellx]) == 0 and (int(Field_structure[self.celly - 1][self.cellx + 1]) != 1 or self.x == (self.cellx + 1) * 40 - 40)) and (self.direction!="DOWN"):
+        if (int(Field_structure[self.celly - 1][self.cellx]) == 0 and (int(Field_structure[self.celly - 1][self.cellx + 1]) != 1 or self.x == (self.cellx + 1) * 40 - 40)) and (self.direction!="DOWN" or (int(Field_structure[self.celly + 1][self.cellx]) == 1 and int(Field_structure[self.celly][self.cellx-1]) == 1 and int(Field_structure[self.celly][self.cellx+1]) == 1)):
 
             #if int(Field_structure[self.celly - 1][self.cellx]) != 1:
             l.append("UP")
@@ -87,7 +89,7 @@ class BlinkyGhost(BaseObject):
             #if int(Field_structure[self.celly][self.cellx - 1]) != 1:
 
             l.append("LEFT")
-        if (int(Field_structure[self.celly][self.cellx + 1]) == 0 and (int(Field_structure[self.celly + 1][self.cellx + 1]) != 1 or self.y == (self.celly + 1) * 40 - 40)) and (self.direction!="LEFT"):
+        if (int(Field_structure[self.celly][self.cellx + 1]) == 0 and (int(Field_structure[self.celly + 1][self.cellx + 1]) != 1 or self.y == (self.celly + 1) * 40 - 40)) and (self.direction!="LEFT" or (int(Field_structure[self.celly][self.cellx-1]) == 1 and int(Field_structure[self.celly - 1][self.cellx]) == 1 and int(Field_structure[self.celly+1][self.cellx]) == 1)):
             #if int(Field_structure[self.celly][self.cellx + 1]) != 1:
             l.append("RIGHT")
         random_direction=random.choice(l)

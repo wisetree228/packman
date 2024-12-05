@@ -6,7 +6,7 @@ import math
 Field_structure = Field().l
 
 class Pacman(BaseObject):
-    def __init__(self, x, y, speed=5):
+    def __init__(self, x, y, speed=4):
         self.x = x
         self.y = y
         self.speed = speed
@@ -66,6 +66,18 @@ class Pacman(BaseObject):
         # Рисуем пакмана (жёлтый прямоугольник)
         pyray.draw_rectangle(self.x, self.y, self.width, self.height, pyray.YELLOW)
     def game(self):
+        if self.x==280 and self.y==200:
+            self.x=920
+            self.y=560
+            self.cellx = self.x // 40
+            self.celly = self.y // 40
+            self.set_direction("LEFT")
+        if self.x==960 and self.y==560:
+            self.x=240
+            self.y=200
+            self.cellx = self.x // 40
+            self.celly = self.y // 40
+            self.set_direction("LEFT")
         if pyray.is_key_down(pyray.KEY_W):
             #if int(Field_structure[self.celly - 1][self.cellx]) != 1:
             self.set_direction("UP")

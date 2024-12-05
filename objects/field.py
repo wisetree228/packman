@@ -15,7 +15,7 @@ class FieldDrawer:
                 rand = randint(1, 40)
                 cell = Cell(x = j*40, y = i*40, type = int(self.field_scheme[i][j]))
                 self.cells.append(cell)
-                if cell.type == 0 and i<16 and not( i in range(1, 5) and j in range(21, 26) ):
+                if cell.type == 0 and i<16:
                     if rand != 19:
                         seed = Seed(x = j*40+20, y = i*40+20)
                         self.seeds.append(seed)
