@@ -12,8 +12,8 @@ class  Life(BaseObject):
         self.count_hp = count_hp
     def draw(self):
         # Вверхняя часть сердечка
-        pyray.draw_circle(self.x - self.size // 2,self.y - self.size // 4, self.size // 2, pyray.RED)
-        pyray.draw_circle(self.x + self.size // 2, self.y - self.size // 4, self.size // 2, pyray.RED)
-        #pyray.draw_triangle((self.x - self.size // 2, self.y - self.size // 4),(self.x + self.size // 2, self.y - self.size // 4), (self.x, self.y + self.size // 2), pyray.RED)
-        pyray.draw_circle(self.x, self.y + self.size // 4, self.size//1.7, pyray.RED)
-        pyray.draw_text(str(self.count_hp), self.x-10, self.y-10, 40, pyray.WHITE)
+        c = 0
+        for i in range(self.count_hp):
+            pyray.draw_circle(self.x+c, self.y, 20, pyray.RED)
+            c+=40
+

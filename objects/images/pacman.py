@@ -68,13 +68,13 @@ class Pacman(BaseObject):
 
     def ghost_collision(self, ClydeGhost, InkyGhost, PinkyGhost, BlinkyGhost):
 
-        if ((38<=abs(self.x-ClydeGhost.x)<=42 and self.y==ClydeGhost.y) or (38<=abs(self.y-ClydeGhost.y)<=42) and self.x==ClydeGhost.x) and not self.rage_mod:
+        if ((38<=abs(self.x-ClydeGhost.x)<=42 and 0<=abs(self.y-ClydeGhost.y)<=40) or (38<=abs(self.y-ClydeGhost.y)<=42) and 0<=abs(self.x-ClydeGhost.x)<=40) and not self.rage_mod:
             return True
-        if ((38<=abs(self.x-InkyGhost.x)<=42 and self.y==InkyGhost.y) or (38<=abs(self.y-InkyGhost.y)<=42) and self.x==InkyGhost.x) and not self.rage_mod:
+        if ((38<=abs(self.x-InkyGhost.x)<=42 and 0<=abs(self.y-InkyGhost.y)<=40) or (38<=abs(self.y-InkyGhost.y)<=42) and 0<=abs(self.x-InkyGhost.x)<=40) and not self.rage_mod:
             return True
-        if ((38<=abs(self.x-PinkyGhost.x)<=42 and self.y==PinkyGhost.y) or (38<=abs(self.y-PinkyGhost.y)<=42) and self.x==PinkyGhost.x) and not self.rage_mod:
+        if ((38<=abs(self.x-PinkyGhost.x)<=42 and 0<=abs(self.y-PinkyGhost.y)<=40) or (38<=abs(self.y-PinkyGhost.y)<=42) and 0<=abs(self.x-PinkyGhost.x)<=40) and not self.rage_mod:
             return True
-        if ((38<=abs(self.x-BlinkyGhost.x)<=42 and self.y==BlinkyGhost.y) or (38<=abs(self.y-BlinkyGhost.y)<=42) and self.x==BlinkyGhost.x) and not self.rage_mod:
+        if ((38<=abs(self.x-BlinkyGhost.x)<=42 and 0<=abs(self.y-BlinkyGhost.y)<=40) or (38<=abs(self.y-BlinkyGhost.y)<=42) and 0<=abs(self.x-BlinkyGhost.x)<=40) and not self.rage_mod:
             return True
     def draw(self):
         # Рисуем пакмана (жёлтый прямоугольник)

@@ -27,7 +27,7 @@ class GameScene(BaseScene):
         self.clydeGhost = ClydeGhost(400, 280, 2)
         self.exit_menu_button = Button(Settings.WIDTH // 2 - 150, 300, 300, 80, "Back to menu", raylib.YELLOW)
         self.cherry = Cherry(300, 300)
-        self.life_counter = Life(160, 680, 50, 3)
+        self.life_counter = Life(40, 680, 50, 3)
         super().__init__()
 
     def set_up_objects(self):
@@ -89,7 +89,7 @@ class GameScene(BaseScene):
                 self.clydeGhost = ClydeGhost(400, 280, 2)
                 self.exit_menu_button = Button(Settings.WIDTH // 2 - 150, 300, 300, 80, "Back to menu", raylib.YELLOW)
                 self.cherry = Cherry(300, 300)
-                self.life_counter = Life(160, 680, 50, 3)
+                self.life_counter = Life(40, 680, 50, 3)
         if pyray.is_key_pressed(pyray.KeyboardKey.KEY_P):
             if Pause:
                 self.pacman.speed = 0
