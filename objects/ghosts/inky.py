@@ -20,7 +20,9 @@ class InkyGhost(BaseObject):
 
     def draw(self):
         pyray.draw_rectangle(self.x, self.y, self.width, self.height, pyray.GREEN)
-
+    def death(self):
+        self.x = 40
+        self.y = 840
     def update(self):
         self.cellx = self.x // 40
         self.celly = self.y // 40
@@ -61,14 +63,7 @@ class InkyGhost(BaseObject):
                 self.x = self.cellx * 40
             else:
                 self.x += self.speed
-        if self.x < 0:
-            self.x = 0
-        elif self.x + self.width > pyray.get_screen_width():
-            self.x = pyray.get_screen_width() - self.width
-        if self.y < 0:
-            self.y = 0
-        elif self.y + self.height > pyray.get_screen_height():
-            self.y = pyray.get_screen_height() - self.height
+
 
 
     def game(self):
@@ -76,6 +71,9 @@ class InkyGhost(BaseObject):
         self.celly = self.y // 40
         if self.x == 480 and self.y == 280:
             self.x = 560
+        if self.y==840 and self.x>=800:
+            self.x = 360
+            self.y = 280
         l = []
         l.append(self.direction)
         if (int(Field_structure[self.celly - 1][self.cellx]) == 0 and (int(Field_structure[self.celly - 1][self.cellx + 1]) != 1 or self.x == (self.cellx + 1) * 40 - 40)) and (self.direction!="DOWN" or (int(Field_structure[self.celly + 1][self.cellx]) == 1 and int(Field_structure[self.celly][self.cellx-1]) == 1 and int(Field_structure[self.celly][self.cellx+1]) == 1)):

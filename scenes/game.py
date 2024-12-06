@@ -64,16 +64,26 @@ class GameScene(BaseScene):
             self.pinkGhost.speed = 0
             self.inkyGhost.speed = 0
             self.clydeGhost.speed = 0
-        if self.pacman.ghost_collision(self.clydeGhost, self.inkyGhost, self.pinkGhost, self.redGhost):
-            self.life_counter.count_hp-=1
-            self.pacman = Pacman(40, 560)
-            self.objects = []
-            self.set_up_objects()
-            self.redGhost = BlinkyGhost(360, 280, 2)
-            self.pinkGhost = PinkyGhost(400, 280, 2)
-            self.inkyGhost = InkyGhost(360, 280, 2)
-            self.clydeGhost = ClydeGhost(400, 280, 2)
-            self.exit_menu_button = Button(Settings.WIDTH // 2 - 150, 300, 300, 80, "Back to menu", raylib.YELLOW)
+        if self.pacman.ghost_collision(self.clydeGhost, self.inkyGhost, self.pinkGhost, self.redGhost)!=0:
+            if not self.pacman.rage_mod:
+                self.life_counter.count_hp-=1
+                self.pacman = Pacman(40, 560)
+                self.objects = []
+                self.set_up_objects()
+                self.redGhost = BlinkyGhost(360, 280, 2)
+                self.pinkGhost = PinkyGhost(400, 280, 2)
+                self.inkyGhost = InkyGhost(360, 280, 2)
+                self.clydeGhost = ClydeGhost(400, 280, 2)
+                self.exit_menu_button = Button(Settings.WIDTH // 2 - 150, 300, 300, 80, "Back to menu", raylib.YELLOW)
+            else:
+                if self.pacman.ghost_collision(self.clydeGhost, self.inkyGhost, self.pinkGhost, self.redGhost)==1:
+                    self.clydeGhost.death()
+                if self.pacman.ghost_collision(self.clydeGhost, self.inkyGhost, self.pinkGhost, self.redGhost)==2:
+                    self.inkyGhost.death()
+                if self.pacman.ghost_collision(self.clydeGhost, self.inkyGhost, self.pinkGhost, self.redGhost)==3:
+                    self.pinkGhost.death()
+                if self.pacman.ghost_collision(self.clydeGhost, self.inkyGhost, self.pinkGhost, self.redGhost)==4:
+                    self.redGhost.death()
         if not Pause:
             self.exit_menu_button.draw()
             if self.exit_menu_button.check_click():
