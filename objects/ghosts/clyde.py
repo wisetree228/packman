@@ -6,6 +6,7 @@ import math
 import time
 import random
 Field_structure = Field().l
+from objects.score import ScoreDrawer
 class ClydeGhost(BaseObject):
 
     def __init__(self, x, y, speed, width=40, height=40, direction="RIGHT", past_derection = ""):
@@ -20,9 +21,11 @@ class ClydeGhost(BaseObject):
 
     def draw(self):
         pyray.draw_rectangle(self.x, self.y, self.width, self.height, pyray.ORANGE)
-    def death(self):
+    def death(self, scoredrawer: ScoreDrawer):
         self.x = 40
         self.y = 840
+        scoredrawer.eaten += 1
+        scoredrawer.update_score(scoredrawer.score + (scoredrawer.eaten*200))
     def update(self):
         self.cellx = self.x // 40
         self.celly = self.y // 40

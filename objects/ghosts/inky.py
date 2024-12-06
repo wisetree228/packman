@@ -5,6 +5,7 @@ from logic.field import Field
 import math
 import time
 import random
+from objects.score import ScoreDrawer
 Field_structure = Field().l
 class InkyGhost(BaseObject):
 
@@ -20,9 +21,11 @@ class InkyGhost(BaseObject):
 
     def draw(self):
         pyray.draw_rectangle(self.x, self.y, self.width, self.height, pyray.GREEN)
-    def death(self):
+    def death(self, scoredrawer: ScoreDrawer):
         self.x = 40
         self.y = 840
+        scoredrawer.eaten+=1
+        scoredrawer.update_score(scoredrawer.score + (scoredrawer.eaten * 200))
     def update(self):
         self.cellx = self.x // 40
         self.celly = self.y // 40

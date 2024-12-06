@@ -4,7 +4,7 @@ import raylib
 from settings import Settings
 from objects.images.pacman import Pacman
 from objects.field import FieldDrawer
-
+from objects.score import ScoreDrawer
 from logic.field import Field
 from objects.ghosts.blinky import BlinkyGhost
 from objects.ghosts.pinky import PinkyGhost
@@ -28,6 +28,7 @@ class GameScene(BaseScene):
         self.exit_menu_button = Button(Settings.WIDTH // 2 - 150, 300, 300, 80, "Back to menu", raylib.YELLOW)
         self.cherry = Cherry(300, 300)
         self.life_counter = Life(40, 680, 50, 3)
+        self.scoredrawer = ScoreDrawer(x=400, y=700)
         super().__init__()
 
     def set_up_objects(self):
@@ -38,7 +39,7 @@ class GameScene(BaseScene):
 
     def additional_process_event(self):
         global Pause
-        self.pacman.game()
+        self.pacman.game(self.scoredrawer)
         self.field.draw()
         self.redGhost.update()
         self.redGhost.draw()
@@ -55,7 +56,8 @@ class GameScene(BaseScene):
         self.cherry.update()
         self.cherry.draw()
         self.life_counter.draw()
-        self.field.eat(self.pacman)
+        self.field.eat(self.pacman, self.scoredrawer)
+        self.scoredrawer.draw()
         if self.life_counter.count_hp==0:
             Pause = False
             pyray.draw_text("YOU LOSE", 300, 200, 80, pyray.RED)
@@ -64,7 +66,7 @@ class GameScene(BaseScene):
             self.pinkGhost.speed = 0
             self.inkyGhost.speed = 0
             self.clydeGhost.speed = 0
-        if self.pacman.ghost_collision(self.clydeGhost, self.inkyGhost, self.pinkGhost, self.redGhost)!=0:
+        if self.pacman.ghost_collision(self.clydeGhost, self.inkyGhost, self.pinkGhost, self.redGhost, self.scoredrawer)!=0:
             if not self.pacman.rage_mod:
                 self.life_counter.count_hp-=1
                 self.pacman = Pacman(40, 560)
@@ -76,14 +78,14 @@ class GameScene(BaseScene):
                 self.clydeGhost = ClydeGhost(400, 280, 2)
                 self.exit_menu_button = Button(Settings.WIDTH // 2 - 150, 300, 300, 80, "Back to menu", raylib.YELLOW)
             else:
-                if self.pacman.ghost_collision(self.clydeGhost, self.inkyGhost, self.pinkGhost, self.redGhost)==1:
-                    self.clydeGhost.death()
-                if self.pacman.ghost_collision(self.clydeGhost, self.inkyGhost, self.pinkGhost, self.redGhost)==2:
-                    self.inkyGhost.death()
-                if self.pacman.ghost_collision(self.clydeGhost, self.inkyGhost, self.pinkGhost, self.redGhost)==3:
-                    self.pinkGhost.death()
-                if self.pacman.ghost_collision(self.clydeGhost, self.inkyGhost, self.pinkGhost, self.redGhost)==4:
-                    self.redGhost.death()
+                if self.pacman.ghost_collision(self.clydeGhost, self.inkyGhost, self.pinkGhost, self.redGhost, self.scoredrawer)==1:
+                    self.clydeGhost.death(self.scoredrawer)
+                if self.pacman.ghost_collision(self.clydeGhost, self.inkyGhost, self.pinkGhost, self.redGhost, self.scoredrawer)==2:
+                    self.inkyGhost.death(self.scoredrawer)
+                if self.pacman.ghost_collision(self.clydeGhost, self.inkyGhost, self.pinkGhost, self.redGhost, self.scoredrawer)==3:
+                    self.pinkGhost.death(self.scoredrawer)
+                if self.pacman.ghost_collision(self.clydeGhost, self.inkyGhost, self.pinkGhost, self.redGhost, self.scoredrawer)==4:
+                    self.redGhost.death(self.scoredrawer)
         if not Pause:
             self.exit_menu_button.draw()
             if self.exit_menu_button.check_click():
@@ -100,6 +102,7 @@ class GameScene(BaseScene):
                 self.exit_menu_button = Button(Settings.WIDTH // 2 - 150, 300, 300, 80, "Back to menu", raylib.YELLOW)
                 self.cherry = Cherry(300, 300)
                 self.life_counter = Life(40, 680, 50, 3)
+                self.scoredrawer = ScoreDrawer(x=100, y=100)
         if pyray.is_key_pressed(pyray.KeyboardKey.KEY_P):
             if Pause:
                 self.pacman.speed = 0

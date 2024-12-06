@@ -5,6 +5,7 @@ from logic.field import Field
 import math
 import time
 import random
+from objects.score import ScoreDrawer
 Field_structure = Field().l
 class BlinkyGhost(BaseObject):
 
@@ -63,9 +64,11 @@ class BlinkyGhost(BaseObject):
                 self.x += self.speed
 
 
-    def death(self):
+    def death(self, scoredrawer: ScoreDrawer):
         self.x = 40
         self.y = 840
+        scoredrawer.eaten += 1
+        scoredrawer.update_score(scoredrawer.score + (scoredrawer.eaten * 200))
     def game(self):
         self.cellx = self.x // 40
         self.celly = self.y // 40
