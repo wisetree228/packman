@@ -59,6 +59,7 @@ class GameScene(BaseScene):
         self.field.eat(self.pacman, self.scoredrawer)
         self.scoredrawer.draw()
         self.check_win()
+        self.wr=False
         if self.life_counter.count_hp==0:
             Pause = False
             pyray.draw_text("YOU LOSE", 300, 200, 80, pyray.RED)
@@ -137,6 +138,10 @@ class GameScene(BaseScene):
             Pause = False
             self.exit_menu_button.draw()
             pyray.draw_text(f'YOU WON! YOUR SCORE IS {self.scoredrawer.score}', 100, 200, 50, pyray.GREEN)
+            if not(self.wr):
+                with open('logic/highscores.txt', 'a') as f:
+                    f.write(f'\nYou={self.scoredrawer.score}')
+                    self.wr = True
             if self.exit_menu_button.check_click():
                 Settings.set_scene(1)
                 Pause = True

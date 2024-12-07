@@ -21,5 +21,18 @@ class HighscoreTable:
     def get_top_scores(self):
         return self.scores
 
+def get_highscore_data():
+    d = []
+    with open('logic/highscores.txt') as f:
+        for s in f.readlines():
+            a = {}
+            name, count = s.split('=')
+            d.append({'name':name, 'score':count})
+    return d
+
+
+
+
+
 if __name__ == "__main__":
     highscore_table = HighscoreTable()
