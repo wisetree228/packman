@@ -23,3 +23,7 @@ class Settings:
     def set_settings_scene():
         Settings.set_scene(3)
 
+    @staticmethod
+    def set_highscores_scene():
+        Settings.set_scene(4)
+

@@ -5,7 +5,7 @@ from scenes.pause import PauseScene
 from settings import Settings
 from scenes.game import GameScene
 from scenes.settings import SettingsScene
-
+from scenes.highscores import HighscoreScene
 
 class Application:
     def __init__(self):
@@ -16,7 +16,8 @@ class Application:
             MenuScene(),
             PauseScene(),
             GameScene(),
-            SettingsScene()
+            SettingsScene(),
+            HighscoreScene()
         ]
 
     def scene_activate(self):
