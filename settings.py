@@ -2,7 +2,7 @@ from raylib import colors
 
 
 class Settings:
-    WIDTH = 1000
+    WIDTH = 1040
     HEIGHT = 800
     FPS = 60
     BACKGROUND_COLOR = colors.BLACK
@@ -16,4 +16,10 @@ class Settings:
 
     @staticmethod
     def set_game_scene():
-        Settings.set_scene(1)
+        Settings.set_scene(2)
+
+
+    @staticmethod
+    def set_settings_scene():
+        Settings.set_scene(3)
+

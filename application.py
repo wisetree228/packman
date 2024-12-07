@@ -3,6 +3,8 @@ import pyray
 from scenes.menu import MenuScene
 from scenes.pause import PauseScene
 from settings import Settings
+from scenes.game import GameScene
+from scenes.settings import SettingsScene
 
 
 class Application:
@@ -13,6 +15,8 @@ class Application:
         self.scenes = [
             MenuScene(),
             PauseScene(),
+            GameScene(),
+            SettingsScene()
         ]
 
     def scene_activate(self):

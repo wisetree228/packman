@@ -1,6 +1,9 @@
 import raylib
 
-
+class BaseObject():
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
 class BaseScene:
     def __init__(self):
         self.objects = []
