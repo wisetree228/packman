@@ -75,16 +75,16 @@ class Pacman(BaseObject):
 
     def ghost_collision(self, ClydeGhost, InkyGhost, PinkyGhost, BlinkyGhost, scoredrawer: ScoreDrawer):
 
-        if ((38<=abs(self.x-ClydeGhost.x)<=42 and 0<=abs(self.y-ClydeGhost.y)<=40) or (38<=abs(self.y-ClydeGhost.y)<=42) and 0<=abs(self.x-ClydeGhost.x)<=40):
+        if ((0<=abs(self.x-ClydeGhost.x)<=40 and 0<=abs(self.y-ClydeGhost.y)<40) or (38<=abs(self.y-ClydeGhost.y)<=42) and 0<=abs(self.x-ClydeGhost.x)<=40):
             scoredrawer.update_score(scoredrawer.score+(scoredrawer.eaten*200))
             return 1
-        if ((38<=abs(self.x-InkyGhost.x)<=42 and 0<=abs(self.y-InkyGhost.y)<=40) or (38<=abs(self.y-InkyGhost.y)<=42) and 0<=abs(self.x-InkyGhost.x)<=40):
+        if ((0<=abs(self.x-InkyGhost.x)<=40 and 0<=abs(self.y-InkyGhost.y)<40) or (38<=abs(self.y-InkyGhost.y)<=42) and 0<=abs(self.x-InkyGhost.x)<=40):
             scoredrawer.update_score(scoredrawer.score + (scoredrawer.eaten * 200))
             return 2
-        if ((38<=abs(self.x-PinkyGhost.x)<=42 and 0<=abs(self.y-PinkyGhost.y)<=40) or (38<=abs(self.y-PinkyGhost.y)<=42) and 0<=abs(self.x-PinkyGhost.x)<=40):
+        if ((0<=abs(self.x-PinkyGhost.x)<=40 and 0<=abs(self.y-PinkyGhost.y)<40) or (38<=abs(self.y-PinkyGhost.y)<=42) and 0<=abs(self.x-PinkyGhost.x)<=40):
             scoredrawer.update_score(scoredrawer.score + (scoredrawer.eaten * 200))
             return 3
-        if ((38<=abs(self.x-BlinkyGhost.x)<=42 and 0<=abs(self.y-BlinkyGhost.y)<=40) or (38<=abs(self.y-BlinkyGhost.y)<=42) and 0<=abs(self.x-BlinkyGhost.x)<=40):
+        if ((0<=abs(self.x-BlinkyGhost.x)<=40 and 0<=abs(self.y-BlinkyGhost.y)<40) or (38<=abs(self.y-BlinkyGhost.y)<=42) and 0<=abs(self.x-BlinkyGhost.x)<=40):
             scoredrawer.update_score(scoredrawer.score + (scoredrawer.eaten * 200))
             return 4
         return 0
